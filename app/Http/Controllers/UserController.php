@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use Auth;
+
 class UserController extends Controller
 {
     public function index()
@@ -46,15 +48,20 @@ class UserController extends Controller
             'username'      =>  'required|string',
             'password'      =>  'required',
         ]);
-       // $is_librarian = (isset($_POST['is_librarian'])) ? 1 : 0;
-       // Validate with our database
-        // if (Auth::attempt(['username'  => $request->username,'password'  => $request->password])){
-        //     return "Login successfully";
-        // }
-        return "Failed";
+       //$is_librarian = (isset($_POST['is_librarian'])) ? 1 : 0;
+       //Validate with our database
+       \Debugbar::info("just before checking data with database on server");
+        if (Auth::attempt(['username'  => $request->username,'password'  => $request->password])){
+            $is_librarian =Auth::user()->is_librarian;
+            if ($is_librarian == 1){
+                return "Librarian Panel";
+            }
+            return "Student Panel";
+        }
+        return "Incorrect Credentials";
 
 
         
-       return view('test');
+       
     }
 }
