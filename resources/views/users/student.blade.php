@@ -32,7 +32,7 @@
       <form method="post" action="{{url('userslogin')}}">
         {{csrf_field()}}
         
-        <a href="{{url('userslogin')}}">View All Shelves</a>
+        <a href="{{url('loan')}}">View All Shelves</a>
        
       </form>
     </div>

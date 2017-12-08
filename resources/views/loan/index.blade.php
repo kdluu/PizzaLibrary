@@ -38,9 +38,9 @@
         <td>{{$book['shelf_id']}}</td>
         <td>{{$book['availability']}}</td>
         <td>
-          <form action="{{action('LoanController@update', $book['id'])}}" method="post">
+          <form action="{{action('LoanController@edit', $book['id'])}}" method="post">
             {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
+            <input name="_method" type="hidden" value="Borrow">
             <button class="btn btn-danger" type="submit">Borrow</button>
           </form>
         </td>
