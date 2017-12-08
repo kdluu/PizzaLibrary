@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 // Auth::routes();
 
-Route::get('/register', 'UserController@index');
+Route::resource('books', 'BookController');
+Route::resource('loan', 'LoanController');
 
+//Route::get('index', 'BookController@index');
+// Route::post('detele', 'BookController@destroy');
 
 Route::get('users-register', 'UserController@index');
 Route::post('users-register', 'UserController@store');

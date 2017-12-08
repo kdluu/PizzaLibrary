@@ -31,10 +31,10 @@
       @endif
       <form method="post" action="{{url('userslogin')}}">
         {{csrf_field()}}
-        <a href="{{url('userslogin')}}">Add Books</a> <br>
-        <a href="{{url('userslogin')}}">Delete Books</a> <br>
-        <a href="{{url('userslogin')}}">View Borrow History</a> <br>
-        <a href="{{url('userslogin')}}">View All Shelves</a>
+       <li> <a href="{{url('books/create')}}">Add Books</a> <br>            </li>
+       <li> <a href="{{url('books')}}">Delete Books</a> <br>           </li>       
+       <li> <a href="{{url('books.create')}}">View Borrow History</a> <br>  </li>
+       <li> <a href="{{url('books')}}">View All Shelves</a>                 </li>
        
       </form>
     </div>
