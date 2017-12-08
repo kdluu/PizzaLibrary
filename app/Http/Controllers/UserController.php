@@ -43,25 +43,22 @@ class UserController extends Controller
     //This get data from login.blade.php
     public function login(Request $request)
     {
-       // \Debugbar::info($request);
+        // \Debugbar::info($request);
         $request->validate([
             'username'      =>  'required|string',
             'password'      =>  'required',
         ]);
-       //$is_librarian = (isset($_POST['is_librarian'])) ? 1 : 0;
-       //Validate with our database
-       \Debugbar::info("just before checking data with database on server");
-        if (Auth::attempt(['username'  => $request->username,'password'  => $request->password])){
+        //$is_librarian = (isset($_POST['is_librarian'])) ? 1 : 0;
+        //Validate with our database
+        //\Debugbar::info("just before checking data with database on server");
+        if (Auth::attempt(['username'  => $request->username,'password'  => $request->password])) {
             $is_librarian =Auth::user()->is_librarian;
-            if ($is_librarian == 1){
+            if ($is_librarian == 1) {
                 return "Librarian Panel";
             }
             return "Student Panel";
         }
-        return "Incorrect Credentials";
 
-
-        
-       
+        return redirect('userslogin')->with('status', 'Incorrect Credentials!');
     }
 }

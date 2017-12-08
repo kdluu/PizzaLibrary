@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
   </head>
   <body>
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
     <div class="container">
       <h2>Login Page</h2><br  />
       @if ($errors->any())
