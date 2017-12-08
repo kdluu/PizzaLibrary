@@ -53,10 +53,12 @@ class UserController extends Controller
         //\Debugbar::info("just before checking data with database on server");
         if (Auth::attempt(['username'  => $request->username,'password'  => $request->password])) {
             $is_librarian =Auth::user()->is_librarian;
+            $name = ($request->username);
             if ($is_librarian == 1) {
-                return "Librarian Panel";
+               
+                return view('users.admin', compact('name'));
             }
-            return "Student Panel";
+            return view('users.student', compact('name'));
         }
 
         return redirect('userslogin')->with('status', 'Incorrect Credentials!');
